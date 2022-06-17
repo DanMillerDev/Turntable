@@ -11,6 +11,13 @@ The project works by rotating an object in a full circle, once the object has fu
 
 
 ### Recorder setup
+Open the Recorder Window (Window -> General -> Recorder -> Recorder Window) and click **Add Recorder** select either movie or image sequence.  
+**Source**: Leave at the default seting of Game View  
+**Output Resolution**: Change this value to the desired output quality  
+**Include Audio**: Uncheck unless you have added audio to Unity and the scene  
+  
+Hit the **START RECORDING** button. The project will enter play mode and leave playmode after a full rotation of the object.
+
 
 ## Project Setup
 The project can be imported into an existing unity project or assets can be added to the Turntable project. 
