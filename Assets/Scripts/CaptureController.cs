@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -44,19 +43,26 @@ public class CaptureController : MonoBehaviour
                 m_SpeedValue = 0.25f;
             break;
         }
+
+        StartCoroutine(RotateObject());
     }
 
-    void Update()
+    IEnumerator RotateObject()
     {
-        // calculate rotation value
-        m_RotationModValue = m_RotationValue * m_SpeedValue;
-        // set object rotation
-        m_TurntableController.SetObjectRotation(m_RotationModValue);
-        m_IncrementValue += m_RotationModValue;
-        
+        while(m_IncrementValue < 360.0f)
+        {
+            // calculate rotation value
+            m_RotationModValue = m_RotationValue * m_SpeedValue;
+            // set object rotation
+            m_TurntableController.SetObjectRotation(m_RotationModValue);
+            m_IncrementValue += m_RotationModValue;
+            yield return null;
+        }
+
         // exit playmode and stop recording after full rotation
         if (m_IncrementValue >= 360.0f)
         {
+            yield return new WaitForEndOfFrame();
             EditorApplication.ExitPlaymode();
         }
     }
