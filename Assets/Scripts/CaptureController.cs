@@ -48,10 +48,13 @@ public class CaptureController : MonoBehaviour
 
     void Update()
     {
+        // calculate rotation value
         m_RotationModValue = m_RotationValue * m_SpeedValue;
+        // set object rotation
         m_TurntableController.SetObjectRotation(m_RotationModValue);
         m_IncrementValue += m_RotationModValue;
-
+        
+        // exit playmode and stop recording after full rotation
         if (m_IncrementValue >= 360.0f)
         {
             EditorApplication.ExitPlaymode();

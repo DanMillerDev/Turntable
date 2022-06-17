@@ -6,7 +6,6 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class TurntableController : MonoBehaviour
 {
-
     [SerializeField]
     Transform m_TargetObject;
 
@@ -18,11 +17,7 @@ public class TurntableController : MonoBehaviour
 
     [SerializeField]
     float m_CameraDistanceFromTarget;
-
-    /*
-    [SerializeField]
-    GameObject m_TestObject;
-*/
+    
     Transform m_CameraTransform;
 
     [SerializeField]
@@ -49,40 +44,31 @@ public class TurntableController : MonoBehaviour
             Debug.LogError("Render Camera is not set!");
         }
     }
-
     
     void Update()
     {
-        Vector3 cameraOffset = new Vector3(0, m_CameraHeightY, 0);
+        Vector3 cameraYOffset = new Vector3(0, m_CameraHeightY, 0);
         if (m_CameraTransform != null)
         {
+            // calculate camera position around object
             float rotRad = m_CameraRotation * Mathf.Deg2Rad; 
             float xPos = m_CameraDistanceFromTarget * Mathf.Sin(rotRad);
             float zPos = m_CameraDistanceFromTarget * Mathf.Cos(rotRad);
 
-            m_CameraTransform.position = cameraOffset + new Vector3(xPos, 0, zPos);
+            // set camera position
+            m_CameraTransform.position = cameraYOffset + new Vector3(xPos, 0, zPos);
+            // set camera rotation
             m_CameraTransform.LookAt(m_TargetObject);
-            //m_TargetObject.eulerAngles = new Vector3(0, m_ObjectRotation, 0);
         }
 
-        /*
-        float rotRad = m_CameraRotation * Mathf.Deg2Rad; 
-        float xPos = m_CameraDistanceFromTarget * Mathf.Sin(rotRad);
-        float zPos = m_CameraDistanceFromTarget * Mathf.Cos(rotRad);
-
-        m_TestObject.transform.position = cameraOffset + new Vector3(xPos, 0, zPos);
-        m_TestObject.transform.LookAt(m_TargetObject);
-        */
+        // rotate object
         m_TargetObject.eulerAngles = new Vector3(0, m_ObjectRotation, 0);
-
+        // adjust camera FOV
         m_RenderCamera.fieldOfView = m_CameraFOV;
-
-
     }
 
     public void SetObjectRotation(float rotationValue)
     {
         m_ObjectRotation += rotationValue;
     }
-
 }
