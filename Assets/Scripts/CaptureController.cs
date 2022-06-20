@@ -23,6 +23,9 @@ public class CaptureController : MonoBehaviour
 
     [SerializeField]
     ModValue m_SpeedModifcation = ModValue.None;
+
+    [SerializeField]
+    int m_NumberOfFramesToWait = 1;
     
     void OnEnable()
     {
@@ -62,7 +65,11 @@ public class CaptureController : MonoBehaviour
         // exit playmode and stop recording after full rotation
         if (m_IncrementValue >= 360.0f)
         {
-            yield return new WaitForEndOfFrame();
+            for (int i = 0; i < m_NumberOfFramesToWait; i++)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
             EditorApplication.ExitPlaymode();
         }
     }

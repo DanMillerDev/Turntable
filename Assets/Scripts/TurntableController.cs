@@ -15,7 +15,7 @@ public class TurntableController : MonoBehaviour
     float m_CameraHeightY;
 
     [SerializeField]
-    float m_CameraDistanceFromTarget;
+    float m_CameraDistanceFromObject = 2.5f;
     
     Transform m_CameraTransform;
 
@@ -51,8 +51,8 @@ public class TurntableController : MonoBehaviour
         {
             // calculate camera position around object
             float rotRad = m_CameraRotation * Mathf.Deg2Rad; 
-            float xPos = m_CameraDistanceFromTarget * Mathf.Sin(rotRad);
-            float zPos = m_CameraDistanceFromTarget * Mathf.Cos(rotRad);
+            float xPos = m_CameraDistanceFromObject * Mathf.Sin(rotRad);
+            float zPos = m_CameraDistanceFromObject * Mathf.Cos(rotRad);
 
             // set camera position
             m_CameraTransform.position = cameraYOffset + new Vector3(xPos, 0, zPos);

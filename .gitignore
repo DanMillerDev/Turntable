@@ -10,6 +10,7 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 /[Rr]ecordings/
+/[Uu]serSettings/
 .idea/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
