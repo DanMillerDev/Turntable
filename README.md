@@ -15,18 +15,22 @@ The project works by rotating an object in a full circle, once the object has fu
 5.  Setup the Recorder window.
 
 ### Recorder setup
-Open the Recorder Window (Window -> General -> Recorder -> Recorder Window) and click **Add Recorder** select either movie or image sequence.  
-**Source**: Leave at the default seting of Game View  
-**Output Resolution**: Change this value to the desired output quality  
-**Include Audio**: Uncheck unless you have added audio to Unity and the scene  
-  
-Hit the **START RECORDING** button. The project will enter play mode and leave playmode after a full rotation of the object.
+1. Open the Recorder Window (Window -> General -> Recorder -> Recorder Window)
+2.  Add Recorder select either movie or image sequence.
+3. Set Output Resolution to desired output quality.
+4. Hit the **START RECORDING** button. The project will enter play mode and leave playmode after a full rotation of the object.
+
+*Source:* Leave at the default setting of Game View  
+*Include Audio*: Uncheck unless you have added audio to Unity and the scene  
+
 
 
 ## Project Setup
 The project can be imported into an existing unity project or assets can be added to the Turntable project. 
 ### Adding turntable to an existing project
-Download the latest [release](https://github.com/DanMillerDev/Turntable/releases) and import the .unitypackage into an existing Unity project. Open the CaptureScene and configure lighting settings and object. You may need to import the recorder package into your project by going to Package Manager -> Unity Registry -> Recorder -> Install.  
+Download the latest [release](https://github.com/DanMillerDev/Turntable/releases) and import the .unitypackage into an existing Unity project. Open the CaptureScene and configure lighting settings and object.   
+
+You may need to **import the recorder package** into your project by going to Package Manager -> Unity Registry -> Recorder -> Install.  
 
 You can also drag the CaptureScene into an existing scene and transfer the game objects over using additive scenes.
 
