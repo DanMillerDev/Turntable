@@ -4,6 +4,24 @@ Turntable is a simple Unity Editor project for outputting videos and image seque
 
 ![image_002_0000](https://user-images.githubusercontent.com/2120584/174715247-8dd69b8e-7913-4337-b1ca-0306f77f833b.jpg)
 
+
+
+
+https://user-images.githubusercontent.com/2120584/174719897-0cbcd9ec-5cf4-40ba-9bcd-22b8dca98401.mp4
+
+
+
+
+*Adjusting values before rendering turntable*
+
+
+
+https://user-images.githubusercontent.com/2120584/174719601-e48dc14a-496c-4954-99cb-392dffb3e73f.mp4
+
+
+
+*Example turntable video rendered with this project*
+
 ## Setup for rendering
 The project works by rotating an object in a full circle, once the object has fully rotated the editor exits playmode. It uses [ExecuteInEditMode](https://docs.unity3d.com/ScriptReference/ExecuteInEditMode.html) attribute to update the camera position before rendering.
 
