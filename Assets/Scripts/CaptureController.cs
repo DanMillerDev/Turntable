@@ -26,6 +26,12 @@ public class CaptureController : MonoBehaviour
 
     [SerializeField]
     int m_NumberOfFramesToWait = 1;
+
+    const float k_FullRotation = 360.0f;
+    const float k_SpeedNone = 1.0f;
+    const float k_SpeedDouble = 2.0f;
+    const float k_SpeedHalf = 0.5f;
+    const float k_SpeedQuarter = 0.25f;
     
     void OnEnable()
     {
@@ -34,16 +40,16 @@ public class CaptureController : MonoBehaviour
         switch (m_SpeedModifcation)
         {
             case ModValue.None:
-                m_SpeedValue = 1.0f;
+                m_SpeedValue = k_SpeedNone;
             break;
             case ModValue.Double:
-                m_SpeedValue = 2.0f;
+                m_SpeedValue = k_SpeedDouble;
             break;
             case ModValue.Half:
-                m_SpeedValue = 0.5f;
+                m_SpeedValue = k_SpeedHalf;
             break;
             case ModValue.Quarter:
-                m_SpeedValue = 0.25f;
+                m_SpeedValue = k_SpeedQuarter;
             break;
         }
 
@@ -52,18 +58,18 @@ public class CaptureController : MonoBehaviour
 
     IEnumerator RotateObject()
     {
-        while(m_IncrementValue < 360.0f)
+        while(m_IncrementValue < k_FullRotation)
         {
             // calculate rotation value
             m_RotationModValue = m_RotationValue * m_SpeedValue;
             // set object rotation
-            m_TurntableController.SetObjectRotation(m_RotationModValue);
+            m_TurntableController.RotateObjectBy(m_RotationModValue);
             m_IncrementValue += m_RotationModValue;
             yield return null;
         }
 
         // exit playmode and stop recording after full rotation
-        if (m_IncrementValue >= 360.0f)
+        if (m_IncrementValue >= k_FullRotation)
         {
             for (int i = 0; i < m_NumberOfFramesToWait; i++)
             {

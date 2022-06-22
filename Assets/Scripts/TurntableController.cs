@@ -21,11 +21,11 @@ public class TurntableController : MonoBehaviour
 
     [SerializeField]
     [Range(0.0f, 180.0f)]
-    float m_CameraFOV;
+    float m_CameraFOV = 60.0f;
 
     [SerializeField]
     [Range(0.0f, 360.0f)]
-    float m_CameraRotation = 60.0f;
+    float m_CameraRotation;
 
     [SerializeField]
     [Range(0.0f, 360.0f)]
@@ -38,15 +38,10 @@ public class TurntableController : MonoBehaviour
         {
             m_CameraTransform = m_RenderCamera.gameObject.transform;
         }
-        else
-        {
-            Debug.LogError("Render Camera is not set!");
-        }
     }
     
     void Update()
     {
-        Vector3 cameraYOffset = new Vector3(0, m_CameraHeightY, 0);
         if (m_CameraTransform != null)
         {
             // calculate camera position around object
@@ -55,7 +50,7 @@ public class TurntableController : MonoBehaviour
             float zPos = m_CameraDistanceFromObject * Mathf.Cos(rotRad);
 
             // set camera position
-            m_CameraTransform.position = cameraYOffset + new Vector3(xPos, 0, zPos);
+            m_CameraTransform.position = new Vector3(xPos, m_CameraHeightY, zPos);
             // set camera rotation
             m_CameraTransform.LookAt(m_TargetObject);
         }
@@ -66,7 +61,7 @@ public class TurntableController : MonoBehaviour
         m_RenderCamera.fieldOfView = m_CameraFOV;
     }
 
-    public void SetObjectRotation(float rotationValue)
+    public void RotateObjectBy(float rotationValue)
     {
         m_ObjectRotation += rotationValue;
     }
